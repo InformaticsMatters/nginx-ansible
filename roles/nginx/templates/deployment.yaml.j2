@@ -46,6 +46,12 @@ spec:
           requests:
             cpu: {{ nx_cpu_request }}
             memory: {{ nx_mem_request }}
+        env:
+        # The playbook date/time
+        # (ISO8601 format - i.e. '2019-03-11T09:19:33.496910Z').
+        # This is used to force a redeployment of the image.
+        - name: ANSIBLE_DATE_TIME_ISO8601_MICRO
+          value: '{{ ansible_date_time.iso8601_micro }}'
         volumeMounts:
         - name: nginx
           mountPath: /usr/share/nginx/html/index.html
