@@ -13,3 +13,7 @@ nx_mem_limit: 32Mi
 nx_node_purpose: application
 nx_cert_issuer: production
 nx_sa_psp: im-core-unrestricted
+
+# General variables
+
+wait_timeout: 120
