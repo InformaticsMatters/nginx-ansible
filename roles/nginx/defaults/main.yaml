@@ -11,7 +11,7 @@ nx_namespace: nginx
 nx_hostname: SetMe
 
 # The nginx content, the website's 'index.html'
-nx_content: |
+nx_content: >-
   <html>
     <body>
       <p style="text-align: center;">
