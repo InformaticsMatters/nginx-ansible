@@ -1,0 +1,56 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx
+  namespace: {{ nx_namespace }}
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        name: nginx
+    spec:
+      serviceAccountName: nginx
+
+      # A 'preferred' (not guaranteed)
+      # node selection affinity...
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: purpose
+                operator: In
+                values:
+                - {{ nx_node_purpose }}
+
+      containers:
+      - name: nginx
+        image: nginx:{{ nx_image_tag }}
+        imagePullPolicy: IfNotPresent
+        terminationMessagePolicy: FallbackToLogsOnError
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            cpu: {{ nx_cpu_limit }}
+            memory: {{ nx_mem_limit }}
+          requests:
+            cpu: {{ nx_cpu_request }}
+            memory: {{ nx_mem_request }}
+        volumeMounts:
+        - name: nginx
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html
+      volumes:
+      - name: nginx
+        configMap:
+          name: nginx

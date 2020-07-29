@@ -1,0 +1,11 @@
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: nx-psp-unrestricted
+  namespace: "{{ nx_namespace }}"
+rules:
+- apiGroups: ['policy']
+  resources: ['podsecuritypolicies']
+  verbs: ['use']
+  resourceNames: ['{{ nx_sa_psp }}']

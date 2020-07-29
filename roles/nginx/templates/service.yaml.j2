@@ -1,0 +1,13 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+  namespace: {{ nx_namespace }}
+spec:
+  selector:
+    name: nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: http

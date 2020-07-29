@@ -1,0 +1,28 @@
+---
+
+- name: Creating namespace '{{ nx_namespace }}'
+  k8s:
+    definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    wait: yes
+  loop:
+  - namespace
+  - serviceaccount
+  - role
+
+- name: Relax {{ nx_namespace }} 'default' service account (for cert-manager)
+  k8s:
+    definition: "{{ lookup('template', 'rolebinding-default-sa.yaml.j2') }}"
+    wait: yes
+
+# Database (postgres) ---------------------------------------------------------
+
+- name: Postgres
+  k8s:
+    definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    wait: yes
+    wait_timeout: "{{ wait_timeout }}"
+  loop:
+  - configmap
+  - deployment
+  - service
+  - ingress

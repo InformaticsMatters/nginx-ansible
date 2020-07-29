@@ -1,0 +1,11 @@
+---
+
+# Do not use our comprehensive/standard lint rules
+# as this repository contains a number of YAML files
+# cloned (copied) from other sources.
+
+rules:
+  indentation: {spaces: 2, indent-sequences: false}
+
+ignore: |
+  roles/discourse/templates/statefulset.yaml.j2

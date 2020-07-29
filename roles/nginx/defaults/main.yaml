@@ -1,0 +1,8 @@
+---
+
+# Deploy (or un-deploy)?
+# One of 'present' or 'absent'.
+nx_state: present
+
+# Namespace
+nx_namespace: nginx
