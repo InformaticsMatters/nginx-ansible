@@ -6,3 +6,6 @@ nx_state: present
 
 # Namespace
 nx_namespace: nginx
+
+# Website URL, i.e. 'example.com'
+nx_hostname: SetMe

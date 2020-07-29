@@ -1,5 +1,12 @@
 ---
 
+- name: Assert control variables
+  assert:
+    that:
+    - nx_hostname is defined
+    - nx_hostname|string|length > 0
+    - nx_hostname|string != 'SetMe'
+
 - name: Creating namespace '{{ nx_namespace }}'
   k8s:
     definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
@@ -14,9 +21,7 @@
     definition: "{{ lookup('template', 'rolebinding-default-sa.yaml.j2') }}"
     wait: yes
 
-# Database (postgres) ---------------------------------------------------------
-
-- name: Postgres
+- name: Deploy nginx ({{ nx_hostname }})
   k8s:
     definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
     wait: yes
