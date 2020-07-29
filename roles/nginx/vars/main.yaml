@@ -12,3 +12,4 @@ nx_mem_limit: 32Mi
 # A request for the node type to deploy to.
 nx_node_purpose: application
 nx_cert_issuer: production
+nx_sa_psp: im-core-unrestricted
