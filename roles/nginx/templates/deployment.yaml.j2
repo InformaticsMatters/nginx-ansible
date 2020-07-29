@@ -49,7 +49,9 @@ spec:
         env:
         # The playbook date/time
         # (ISO8601 format - i.e. '2019-03-11T09:19:33.496910Z').
-        # This is used to force a redeployment of the image.
+        # This is used to force a redeployment of the image
+        # each time the role's playbook is run. This effectively
+        # results in the image being 'bounced'.
         - name: ANSIBLE_DATE_TIME_ISO8601_MICRO
           value: '{{ ansible_date_time.iso8601_micro }}'
         volumeMounts:
