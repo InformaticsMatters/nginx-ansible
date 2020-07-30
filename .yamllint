@@ -6,6 +6,3 @@
 
 rules:
   indentation: {spaces: 2, indent-sequences: false}
-
-ignore: |
-  roles/discourse/templates/statefulset.yaml.j2
