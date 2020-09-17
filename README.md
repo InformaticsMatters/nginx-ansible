@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.com/InformaticsMatters/nginx-ansible.svg?branch=master)](https://travis-ci.com/InformaticsMatters/nginx-ansible)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/informaticsmatters/nginx-ansible)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible/badge)](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible)
+
 A playbook and Role to deploy NGINX, suitable for execution by
 [AWX].
 
