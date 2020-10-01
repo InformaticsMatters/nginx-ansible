@@ -3,14 +3,12 @@
 # The NGINX version.
 nx_image_tag: '1.19.1-alpine'
 
-# CPU and Memory requests and limits
-nx_cpu_request: 250m
-nx_cpu_limit: 500m
+# CPU and Memory requests and limits (very low)
+nx_cpu_request: 100m
+nx_cpu_limit: 100m
 nx_mem_request: 32Mi
 nx_mem_limit: 32Mi
 
-# A request for the node type to deploy to.
-nx_node_purpose: application
 nx_cert_issuer: production
 nx_sa_psp: im-core-unrestricted
 

@@ -18,18 +18,25 @@ spec:
     spec:
       serviceAccountName: nginx
 
-      # A 'preferred' (not guaranteed)
-      # node selection affinity...
+      # Avoid 'worker' nodes
+      # and prefer 'application' nodes
       affinity:
         nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: informaticsmatters.com/purpose
+                operator: NotIn
+                values:
+                - worker
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
             preference:
               matchExpressions:
-              - key: purpose
+              - key: informaticsmatters.com/purpose
                 operator: In
                 values:
-                - {{ nx_node_purpose }}
+                - application
 
       containers:
       - name: nginx
