@@ -1,6 +1,7 @@
 # NGINX Orchestration (Ansible)
 
-[![Build Status](https://travis-ci.com/InformaticsMatters/nginx-ansible.svg?branch=master)](https://travis-ci.com/InformaticsMatters/nginx-ansible)
+![lint](https://github.com/InformaticsMatters/nginx-ansible/workflows/lint/badge.svg)
+
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/informaticsmatters/nginx-ansible)
 
 [![CodeFactor](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible/badge)](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible)

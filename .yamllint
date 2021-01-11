@@ -4,5 +4,8 @@
 # as this repository contains a number of YAML files
 # cloned (copied) from other sources.
 
+ignore: |
+  .github/
+
 rules:
   indentation: {spaces: 2, indent-sequences: false}
