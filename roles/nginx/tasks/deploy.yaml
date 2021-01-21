@@ -7,12 +7,25 @@
     - nx_hostname|string|length > 0
     - nx_hostname|string != 'SetMe'
 
-- name: Creating namespace '{{ nx_namespace }}'
+- name: Create namespace ({{ nx_namespace }})
+  k8s:
+    definition: "{{ lookup('template', 'namespace.yaml.j2') }}"
+    wait: yes
+
+- name: Create DockerHub image pull secret
+  k8s:
+    definition: "{{ lookup('template', 'secret-dh-imagepull.yaml.j2') }}"
+    wait: yes
+  vars:
+    pull_namespace: "{{ nx_namespace }}"
+    pull_secret: "{{ nx_dockerhub_pullsecret }}"
+  when: nx_dockerhub_pullsecret|string|length > 0
+
+- name: Creating namespace material
   k8s:
     definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
     wait: yes
   loop:
-  - namespace
   - serviceaccount
   - role
 

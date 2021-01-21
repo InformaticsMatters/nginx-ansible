@@ -20,3 +20,10 @@ nx_content: >-
       </p>
     </body>
   </html>
+
+# A pull-secret for public images pulled from DockerHub.
+# If set this is the base-64 string that can be used as the value
+# in our Kubernetes Secret as the .dockerconfigjson value.
+# If set it is applied to the ServiceAccount in the namespace
+# and applied to Pods that use that namespace.
+nx_dockerhub_pullsecret: ''
