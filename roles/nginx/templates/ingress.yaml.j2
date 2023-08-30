@@ -1,15 +1,15 @@
 ---
 
 kind: Ingress
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 metadata:
   name: nginx
   namespace: {{ nx_namespace }}
   annotations:
     ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-nginx-{{ nx_cert_issuer|lower }}"
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
     - {{ nx_hostname }}
@@ -19,6 +19,9 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: nginx
-          servicePort: http
+          service
+            name: nginx
+            port:
+              name: http
