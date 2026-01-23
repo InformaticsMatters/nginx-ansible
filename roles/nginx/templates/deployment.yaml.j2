@@ -18,26 +18,6 @@ spec:
     spec:
       serviceAccountName: nginx
 
-      # Avoid 'worker' nodes
-      # and prefer 'application' nodes
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: informaticsmatters.com/purpose
-                operator: NotIn
-                values:
-                - worker
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: informaticsmatters.com/purpose
-                operator: In
-                values:
-                - application
-
       containers:
       - name: nginx
         image: nginx:{{ nx_image_tag }}
