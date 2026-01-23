@@ -23,24 +23,18 @@
 
 - name: Creating namespace material
   k8s:
-    definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    definition: "{{ lookup('template', item) }}"
     wait: yes
   loop:
-  - serviceaccount
-  - role
-
-- name: Relax {{ nx_namespace }} 'default' service account (for cert-manager)
-  k8s:
-    definition: "{{ lookup('template', 'rolebinding-default-sa.yaml.j2') }}"
-    wait: yes
+  - serviceaccount.yaml.j2
 
 - name: Deploy nginx ({{ nx_hostname }})
   k8s:
-    definition: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    definition: "{{ lookup('template', item) }}"
     wait: yes
     wait_timeout: "{{ wait_timeout }}"
   loop:
-  - configmap
-  - deployment
-  - service
-  - ingress
+  - configmap.yaml.j2
+  - deployment.yaml.j2
+  - service.yaml.j2
+  - ingress.yaml.j2
