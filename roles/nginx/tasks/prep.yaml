@@ -6,15 +6,6 @@
 - debug:
     var: ansible_version.full
 
-# Basic pre-playbook prerequisites.
-# We need the openshift/kubernetes module amongst other things...
-
-- name: Install prerequisite Python modules
-  pip:
-    name:
-    - jmespath==0.9.4
-    extra_args: --user
-
 # Kubernetes credentials ------------------------------------------------------
 
 # We don't use the Kubernetes credentials directly,
