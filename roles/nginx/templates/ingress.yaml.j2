@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - {{ nx_hostname }}
-    secretName: discourse-tls
+    secretName: nginx-tls
   rules:
   - host: {{ nx_hostname }}
     http:
@@ -20,7 +20,7 @@ spec:
       - path: /
         pathType: Prefix
         backend:
-          service
+          service:
             name: nginx
             port:
               name: http
