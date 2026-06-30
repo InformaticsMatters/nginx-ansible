@@ -27,3 +27,4 @@
     group/k8s:
       host: "{{ k8s_auth_host }}"
       api_key: "{{ k8s_auth_api_key }}"
+      validate_certs: "{{ k8s_auth_verify_ssl | bool }}"
