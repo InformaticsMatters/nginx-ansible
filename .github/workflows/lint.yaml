@@ -21,16 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Set up Python
-      uses: actions/setup-python@v6
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
       with:
-        python-version: '3.11'
+        enable-cache: true
     - name: Install dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -r build-requirements.txt
-        pip install -r requirements.txt
+      run: uv sync
     - name: Lint
       run: |
-        yamllint .
-        find . -type f -name '*.yaml.j2' -exec yamllint {} +
+        uv run yamllint .
+        find . -type f -name '*.yaml.j2' -exec uv run yamllint {} +
