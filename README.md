@@ -1,4 +1,4 @@
-# NGINX Orchestration (Ansible)
+# NGINX with an index.html (Ansible)
 
 ![lint](https://github.com/InformaticsMatters/nginx-ansible/workflows/lint/badge.svg)
 
@@ -7,7 +7,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible/badge)](https://www.codefactor.io/repository/github/informaticsmatters/nginx-ansible)
 
 A playbook and Role to deploy NGINX, suitable for execution by
-[AWX].
+[AWX] or the command-line.
 
 This project contains one Ansible role:-
 
@@ -33,11 +33,15 @@ uv sync
 uv run yamllint .
 ```
 
-The playbook can be run (from within AWX) with: -
+The playbook can be run from within the virtual environment with the following,
+where you will have to provide a suitable hostname for the webpage: -
 
 ```bash
-uv run ansible-playbook site.yaml
+uv run ansible-playbook site.yaml -e nx_hostname=example.com
 ```
+
+>   You can disable SSL verification by setting the `K8S_AUTH_VERIFY_SSL`
+    environment variable to 'no' before running the playbook.
 
 ---
 
