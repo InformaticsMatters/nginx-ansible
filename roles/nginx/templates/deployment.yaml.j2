@@ -40,7 +40,7 @@ spec:
         # each time the role's playbook is run. This effectively
         # results in the image being 'bounced'.
         - name: ANSIBLE_DATE_TIME_ISO8601_MICRO
-          value: '{{ ansible_date_time.iso8601_micro }}'
+          value: '{{ ansible_facts.date_time.iso8601_micro }}'
         volumeMounts:
         - name: nginx
           mountPath: /usr/share/nginx/html/index.html

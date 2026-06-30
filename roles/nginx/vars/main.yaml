@@ -1,7 +1,7 @@
 ---
 
 # The NGINX version.
-nx_image_tag: '1.29.4-alpine'
+nx_image_tag: '1.31.2-alpine'
 
 # CPU and Memory requests and limits (very low)
 nx_cpu_request: 100m
