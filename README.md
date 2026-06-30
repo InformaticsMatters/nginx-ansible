@@ -22,6 +22,24 @@ As with all of our playbooks you can find the common user-defined variables
 in the role's `defaults/main.yaml` and less common variables in
 `vars/main.yaml`.
 
+## Development
+
+Python dependencies are managed with [uv]. The pinned interpreter is in
+`.python-version` and all dependencies are declared in `pyproject.toml`.
+Create the environment and run the linter with: -
+
+```bash
+uv sync
+uv run yamllint .
+```
+
+The playbook can be run (from within AWX) with: -
+
+```bash
+uv run ansible-playbook site.yaml
+```
+
 ---
 
 [awx]: https://github.com/ansible/awx
+[uv]: https://docs.astral.sh/uv/

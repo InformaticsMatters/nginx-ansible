@@ -1,0 +1,19 @@
+[project]
+name = "nginx-ansible"
+version = "2026.1"
+description = "Ansible playbook and role to deploy a placeholder NGINX site to Kubernetes"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "ansible",
+  "kubernetes>=35,<36",
+]
+
+[dependency-groups]
+dev = [
+  "ansible-lint",
+  "yamllint",
+]
+
+[tool.uv]
+package = false

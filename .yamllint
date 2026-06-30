@@ -6,6 +6,7 @@
 
 ignore: |
   .github/
+  .venv/
   roles/nginx/templates/serviceaccount.yaml.j2
   roles/nginx/templates/ingress.yaml.j2
 
